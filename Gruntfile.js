@@ -20,7 +20,7 @@ module.exports = function(grunt) {
     jst: {
       compile: {
         options: {
-          namespace: 'mpApp.templates'
+          namespace: 'mpApp.<%= pkg.name %>.templates'
         },
         files: {
           'dist/templates.js': ['js/app/templates/*.html']
