@@ -9,7 +9,8 @@ module.exports = function(grunt) {
         '<%= grunt.template.today("yyyy-mm-dd") + "\\n" %>' +
         '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
         '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+        ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */' + 
+        '<%= "\\n\\n" %>'
     },
     jshint: {
       files: ['Gruntfile.js', 'js/*.js']
@@ -28,18 +29,23 @@ module.exports = function(grunt) {
       }
     },
     concat: {
+      options: {
+        separator: '\r\n\r\n'
+      },
       dist: {
-        src: ['js/app/app.js'],
+        src: ['js/core.js', 'dist/templates.js', 'js/app.js'],
         dest: 'dist/<%= pkg.name %>.<%= pkg.version %>.js'
       },
       dist_latest: {
-        src: '<config:concat.dist.src>',
+        src: ['<%= concat.dist.src %>'],
         dest: 'dist/<%= pkg.name %>.latest.js'
       },
       libs: {
         src: ['lib/jquery-1.9.1.min.js', 'lib/underscore-1.4.4.min.js', 'lib/backbone-1.0.0.min.js'],
         dest: 'dist/<%= pkg.name %>.libs.js',
-        separator: ';\r\n\r\n'
+        options: {
+          separator: ';\r\n\r\n'
+        }
       },
       /*
       css_libs: {
