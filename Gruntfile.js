@@ -112,6 +112,13 @@ module.exports = function(grunt) {
         mpApp: true
       }
     },
+    gss_pull: {
+      mayor_data: {
+        files: {
+          'dist/data.json' : ['0Amt1xpycNp7OdDYtRUJENTZEamVOby1tY2RHRi1SV1E']
+        },
+      },
+    },
     s3: {
       // This is specific to MinnPost
       //
@@ -141,11 +148,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jst');
   grunt.loadNpmTasks('grunt-contrib-clean');
-  
+  grunt.loadNpmTasks('grunt-gss-pull');
   grunt.loadNpmTasks('grunt-s3');
+  
 
   // Default task.
   grunt.registerTask('default', ['jshint', 'clean', 'jst', 'concat', 'uglify', 'copy']);
+  
+  // Data tasks
+  grunt.registerTask('data', ['gss_pull']);
+  
+  // Deploy tasks
   grunt.registerTask('mp-deploy', ['s3']);
 
 };
