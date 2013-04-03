@@ -12,6 +12,11 @@ module.exports = function(grunt) {
         ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */' + 
         '<%= "\\n\\n" %>'
     },
+    data_embed: {
+      mayor: {
+        'dist/data.js': ['<%= gss_pull.mayor_data.dest %>']
+      }
+    },
     jshint: {
       files: ['Gruntfile.js', 'js/*.js']
     },
@@ -33,7 +38,7 @@ module.exports = function(grunt) {
         separator: '\r\n\r\n'
       },
       dist: {
-        src: ['js/core.js', 'dist/templates.js', 'js/app.js'],
+        src: ['js/core.js', 'dist/templates.js', 'dist/data.js', 'js/app.js'],
         dest: 'dist/<%= pkg.name %>.<%= pkg.version %>.js'
       },
       dist_latest: {
@@ -114,9 +119,8 @@ module.exports = function(grunt) {
     },
     gss_pull: {
       mayor_data: {
-        files: {
-          'dist/data.json' : ['0Amt1xpycNp7OdDYtRUJENTZEamVOby1tY2RHRi1SV1E']
-        },
+        dest: 'data/mayoral_candidates.json',
+        src: ['0Amt1xpycNp7OdDYtRUJENTZEamVOby1tY2RHRi1SV1E']
       },
     },
     s3: {
@@ -152,11 +156,25 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-s3');
   
 
-  // Default task.
-  grunt.registerTask('default', ['jshint', 'clean', 'jst', 'concat', 'uglify', 'copy']);
+  // Custom task to save json data into a JS file for concatentation
+  grunt.registerMultiTask('data_embed', 'Make data embeddable', function() {
+    var t, file, output;
+    var tasks = this.data; 
+    var config = grunt.config.get();
+    
+    for (var t in tasks) {
+      file = grunt.file.read(tasks[t][0]);
+      output = 'mpApp["' + config.pkg.name + '"]["' + this.target + '"] = ' + file + ';'
+      grunt.file.write(t, output);
+      grunt.log.write('Wrote ' + tasks[t][0] + ' to ' + t + '...').ok();
+    }
+  });
   
   // Data tasks
-  grunt.registerTask('data', ['gss_pull']);
+  grunt.registerTask('data', ['gss_pull', 'data_embed']);
+
+  // Default task.
+  grunt.registerTask('default', ['jshint', 'clean', 'jst', 'data', 'concat', 'uglify', 'copy']);
   
   // Deploy tasks
   grunt.registerTask('mp-deploy', ['s3']);
