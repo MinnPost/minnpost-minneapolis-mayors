@@ -8,5 +8,4 @@
 (function(app, $, undefined) {  
   
   
-  
 })(mpApp['minnpost-minneapolis-mayors'], jQuery);

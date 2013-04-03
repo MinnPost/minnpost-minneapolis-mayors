@@ -13,7 +13,7 @@ module.exports = function(grunt) {
         '<%= "\\n\\n" %>'
     },
     data_embed: {
-      mayor: {
+      mayoral_candidates: {
         'dist/data.js': ['<%= gss_pull.mayor_data.dest %>']
       }
     },
@@ -164,7 +164,7 @@ module.exports = function(grunt) {
     
     for (var t in tasks) {
       file = grunt.file.read(tasks[t][0]);
-      output = 'mpApp["' + config.pkg.name + '"]["' + this.target + '"] = ' + file + ';'
+      output = 'mpApp["' + config.pkg.name + '"].data["' + this.target + '"] = ' + file + ';'
       grunt.file.write(t, output);
       grunt.log.write('Wrote ' + tasks[t][0] + ' to ' + t + '...').ok();
     }
