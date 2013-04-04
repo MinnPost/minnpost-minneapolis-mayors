@@ -1,0 +1,36 @@
+<div class="candidate-details-container clear-block">
+  <div class="candidate-details-left">
+    <div class="candidate-details-left-inner">
+      <h3><%= candidate.candidatename %></h3>
+    
+      <p><%= candidate.biotext %></p>
+    
+    </div>
+  </div>
+  
+  <div class="candidate-details-right">
+    <div class="candidate-details-right-inner">
+      <h4>Stats</h4>
+      
+      <div class="candidate-stats">
+        Age: <%= candidate.age %> <br />
+        Neighborhood: <%= candidate.neighborhood %> <br />
+        Occupation: <%= candidate.occupation %> <br />
+      </div>
+      
+      <h4>Endorsements</h4>
+      
+      <div class="candidate-endorsements">
+        <p><%= candidate.supporters %></p>
+      </div>
+      
+      <h4>Links</h4>
+      
+      <div class="candidate-links">
+        <a href="<%= candidate.websiteurl %>" target="_blank">Website</a> <br />
+        <a href="<%= candidate.twitterhandle %>" target="_blank">Twitter</a> <br />
+      </div>
+  
+    </div>
+  </div>
+</div>

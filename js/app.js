@@ -15,11 +15,27 @@
     
   });
   
+  app.CandidateView = Backbone.View.extend({
+    model: app.CandidateModel,
+    el: '#candidates-details',
+    
+    initialize: function() {
+      this.templates = this.templates || {};
+    },
+    
+    render: function() {
+      app.getTemplate('template-candidate', function(template) {
+        this.templates.candidate = template;
+        this.$el.html(this.templates.candidate({ candidate: this.model.toJSON() }));
+      }, this);
+      return this;
+    }
+  });
+  
   app.CandidatesView = Backbone.View.extend({
     collection: app.CandidatesCollection,
     
     initialize: function() {
-      var thisView = this;
       this.templates = this.templates || {};
     },
     
@@ -39,18 +55,19 @@
       return this;
     },
     
-    renderCandidates: function(e) {
+    renderCandidates: function() {
       app.getTemplate('template-candidates', function(template) {
         this.templates.candidates = template;
         this.$el.html(this.templates.candidates({ candidates: this.collection.toJSON() }));
       }, this);
       return this;
-    }
-  });
-  
-  app.CandidateView = Backbone.View.extend({
-    model: app.CandidateModel
+    },
     
+    renderCandidate: function(candidate) {
+      this.candidateView = new app.CandidateView({
+        model: candidate
+      }).render();
+    }
   });
   
   app.Application = Backbone.Router.extend({
@@ -99,8 +116,9 @@
       this.candidateView.renderCandidates();
     },
     
-    routeCandidate: function(candidate) {
-      
+    routeCandidate: function(candidate_id) {
+      this.candidateView.renderCandidates();
+      this.candidateView.renderCandidate(this.candidates.get(candidate_id));
     },
     
     makeID: function(string) {

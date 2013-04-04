@@ -57,7 +57,6 @@
   line-height: 100%;
 }
 
-
 /**
  * Candidate list
  */
@@ -85,3 +84,26 @@
   line-height: 1.25em;
   margin: 1em;
 }
+
+/**
+ * Candidate view
+ */
+.candidate-details-container {
+  margin-top: 2em;
+}
+
+.candidate-details-left {
+  float: left;
+  width: 65%;
+}
+
+.candidate-details-left-inner {
+  padding-right: 1em;
+}
+
+.candidate-details-right {
+  float: right;
+  width: 35%;
+}
+
+
