@@ -132,7 +132,11 @@ module.exports = function(grunt) {
     s3: {
       // This is specific to MinnPost
       //
-      // These are assumed to be environment variables
+      // These are assumed to be environment variables:
+      //
+      // AWS_ACCESS_KEY_ID
+      // AWS_SECRET_ACCESS_KEY
+      //
       // See https://npmjs.org/package/grunt-s3
       //key: 'YOUR KEY',
       //secret: 'YOUR SECRET',
