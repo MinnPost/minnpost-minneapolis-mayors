@@ -29,7 +29,7 @@ module.exports = function(grunt) {
           namespace: 'mpApp.<%= pkg.name %>.templates'
         },
         files: {
-          'dist/templates.js': ['js/app/templates/*.html']
+          'dist/templates.js': ['js/templates/*.html']
         }
       }
     },
