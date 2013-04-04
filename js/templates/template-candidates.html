@@ -1,0 +1,18 @@
+<div class="candidates-container">
+  <div class="candidates-list clear-block">
+    <% _.each(candidates, function(c) { %>
+      <div class="candidate-list-candidate">
+        <div class="candidate-list-candidate-inner">
+          <a href="#candidate/<%= c.id %>">
+            <img src="" />
+          </a>
+          <a href="#candidate/<%= c.id %>"><%= c.candidatename %></a>
+        </div>
+      </div>
+    <% }) %>
+  </div>
+
+  <div class="candidates-details clear-block">
+    <p class="click-candidate-desciption sans-serif">Click candidate to see details</p>
+  </div>
+</div>

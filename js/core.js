@@ -25,7 +25,7 @@ mpApp['minnpost-minneapolis-mayors'] = mpApp['minnpost-minneapolis-mayors'] || {
    * Expects callback like: function(compiledTemplate) {  }
    */
   app.templates = app.templates || {};
-  app.getTemplate = function(name, callback) {
+  app.getTemplate = function(name, callback, context) {
     var templatePath = 'js/templates/' + name + '.html';
     context = context || app;
     
