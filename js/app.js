@@ -26,8 +26,22 @@
     render: function() {
       app.getTemplate('template-candidate', function(template) {
         this.templates.candidate = template;
-        this.$el.html(this.templates.candidate({ candidate: this.model.toJSON() }));
+        var output = this.templates.candidate({ candidate: this.model.toJSON() });
+        
+        this.$el.fadeOut(function() {
+          $(this).html(output);
+          $(this).fadeIn();
+        });
+        
+        this.highlightCandidate();
       }, this);
+      return this;
+    },
+    
+    highlightCandidate: function() {
+      $('.' + this.model.id + '').removeClass('unhighlight');
+      $('.candidate-list-candidate-inner:not(.' + this.model.id + ')')
+        .addClass('unhighlight');
       return this;
     }
   });
@@ -56,10 +70,18 @@
     },
     
     renderCandidates: function() {
-      app.getTemplate('template-candidates', function(template) {
-        this.templates.candidates = template;
-        this.$el.html(this.templates.candidates({ candidates: this.collection.toJSON() }));
-      }, this);
+      // Only need to do once
+      if (!this.renderedCandidates) {
+        app.getTemplate('template-candidates', function(template) {
+          this.templates.candidates = template;
+          this.$el.html(this.templates.candidates({
+            candidates: this.collection.toJSON(),
+            options: app.options
+          }));
+          
+          this.renderedCandidates = true;
+        }, this);
+      }
       return this;
     },
     
@@ -76,8 +98,16 @@
       'candidate/:candidate': 'routeCandidate',
       '*defaultR': 'routeDefault'
     },
+    
+    defaultOptions: {
+      imagePath: './css/images/'
+    },
   
     initialize: function(options) {
+      // Store intial options for globa use
+      app.options = _.extend(this.defaultOptions, options);
+      
+      // Create objects that are needed app wide
       this.candidates = this.candidates || new app.CandidatesCollection();
       this.candidateView = new app.CandidatesView({
         collection: this.candidates,
@@ -95,6 +125,7 @@
       
       _.each(data[sheet], function(c) {
         c.id = thisRouter.makeID(c.candidatename);
+        c.image = c.candidatename.replace(' ', '') + '250.png';
         thisRouter.candidates.add(new app.CandidateModel(c));
       });
       

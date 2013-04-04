@@ -18,7 +18,7 @@
       
       <h4>Stats</h4>
       
-      <div class="candidate-stats">
+      <div class="candidate-stats sans-serif">
         <div>
           <span class="candidate-stats-label">Age</span>: <%= candidate.age %>
         </div>
@@ -38,13 +38,13 @@
       
       <h4>Endorsements</h4>
       
-      <div class="candidate-endorsements">
+      <div class="candidate-endorsements sans-serif">
         <p><%= candidate.supportersandendorsements %></p>
       </div>
       
       <h4>Links</h4>
       
-      <div class="candidate-links">
+      <div class="candidate-links sans-serif">
         <div>
           <a href="<%= candidate.websiteurl %>" target="_blank">Website</a>
         </div>
@@ -56,7 +56,7 @@
       
       <h4>Read more</h4>
       
-      <div class="candidate-links">
+      <div class="candidate-links sans-serif">
         <% if (candidate.firstarticlelink) { %>
           <div><%= candidate.firstarticlelink %></div>
         <% } %>

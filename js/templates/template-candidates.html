@@ -2,9 +2,9 @@
   <div class="candidates-list clear-block">
     <% _.each(candidates, function(c) { %>
       <div class="candidate-list-candidate">
-        <div class="candidate-list-candidate-inner">
+        <div class="candidate-list-candidate-inner sans-serif <%= c.id %>">
           <a href="#candidate/<%= c.id %>">
-            <img src="" />
+            <img src="<%= options.imagePath %><%= c.image %>" />
           </a>
           <a href="#candidate/<%= c.id %>"><%= c.candidatename %></a>
         </div>

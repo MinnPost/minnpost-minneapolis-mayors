@@ -64,6 +64,9 @@
   float: left;
   width: 16.665555555%;
   min-height: 100px;
+  font-size: .85em;
+  margin-top: .5em;
+  margin-bottom: 1em;
 }
 
 .candidate-list-candidate-inner {
@@ -80,16 +83,25 @@
 
 .click-candidate-desciption {
   text-align: center;
-  font-size: 2em;
-  line-height: 1.25em;
-  margin: 1em;
+  padding: 2em 0 3em 0;
+  display: block;
+  text-transform: uppercase;
+  color: #BDBDBD;
+}
+
+.candidate-list-candidate-inner.unhighlight {
+  opacity: 0.35;
+  filter: alpha(opacity = 35);
+}
+.candidate-list-candidate-inner:hover {
+  opacity: 1;
+  filter: alpha(opacity = 100);
 }
 
 /**
  * Candidate view
  */
 .candidate-details-container {
-  margin-top: 2em;
 }
 
 .candidate-details-left {
