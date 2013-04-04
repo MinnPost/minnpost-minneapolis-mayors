@@ -3,32 +3,71 @@
     <div class="candidate-details-left-inner">
       <h3><%= candidate.candidatename %></h3>
     
-      <p><%= candidate.biotext %></p>
-    
+      <h4>Bio</h4>
+      <%= candidate.biotext %>
+      
+      <h4>Mayor quote</h4>
+      <%= candidate.whymayorquote %>
+      
     </div>
   </div>
   
   <div class="candidate-details-right">
     <div class="candidate-details-right-inner">
+      <h3>&nbsp;</h3>
+      
       <h4>Stats</h4>
       
       <div class="candidate-stats">
-        Age: <%= candidate.age %> <br />
-        Neighborhood: <%= candidate.neighborhood %> <br />
-        Occupation: <%= candidate.occupation %> <br />
+        <div>
+          <span class="candidate-stats-label">Age</span>: <%= candidate.age %>
+        </div>
+        
+        <div>
+          <span class="candidate-stats-label">Neighborhood</span>: <%= candidate.neighborhood %>
+        </div>
+        
+        <div>
+          <span class="candidate-stats-label">Occupation</span>: <%= candidate.occupation %>
+        </div>
+        
+        <div>
+          <span class="candidate-stats-label">Previous offices</span>: <%= candidate.previouspoliticalofficesheld %>
+        </div>
       </div>
       
       <h4>Endorsements</h4>
       
       <div class="candidate-endorsements">
-        <p><%= candidate.supporters %></p>
+        <p><%= candidate.supportersandendorsements %></p>
       </div>
       
       <h4>Links</h4>
       
       <div class="candidate-links">
-        <a href="<%= candidate.websiteurl %>" target="_blank">Website</a> <br />
-        <a href="<%= candidate.twitterhandle %>" target="_blank">Twitter</a> <br />
+        <div>
+          <a href="<%= candidate.websiteurl %>" target="_blank">Website</a>
+        </div>
+        
+        <div>
+          <a href="<%= candidate.twitterhandle %>" target="_blank">Twitter</a>
+        </div>
+      </div>
+      
+      <h4>Read more</h4>
+      
+      <div class="candidate-links">
+        <% if (candidate.firstarticlelink) { %>
+          <div><%= candidate.firstarticlelink %></div>
+        <% } %>
+        
+        <% if (candidate.secondarticlelink) { %>
+          <div><%= candidate.secondarticlelink %></div>
+        <% } %>
+        
+        <% if (candidate.thirdarticlelink) { %>
+          <div><%= candidate.thirdarticlelink %></div>
+        <% } %>
       </div>
   
     </div>

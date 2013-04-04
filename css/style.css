@@ -94,16 +94,35 @@
 
 .candidate-details-left {
   float: left;
-  width: 65%;
+  width: 70%;
 }
 
 .candidate-details-left-inner {
-  padding-right: 1em;
+  padding-right: 3em;
 }
 
 .candidate-details-right {
   float: right;
-  width: 35%;
+  width: 30%;
 }
 
+.candidate-stats {
+  margin-bottom: 1em;
+}
 
+.candidate-stats div {
+  margin-bottom: .5em;
+}
+
+.candidate-stats-label {
+  font-weight: bold;
+}
+
+.candidate-endorsements {
+  margin-bottom: 1em;
+  
+}
+
+.candidate-links {
+  margin-bottom: 1em;
+}
