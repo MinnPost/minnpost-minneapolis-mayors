@@ -33,7 +33,7 @@
           $(this).fadeIn();
         });
         
-        this.highlightCandidate();
+        this.highlightCandidate().adjustViewport();
       }, this);
       return this;
     },
@@ -43,6 +43,23 @@
       $('.candidate-list-candidate-inner:not(.' + this.model.id + ')')
         .addClass('unhighlight');
       return this;
+    },
+    
+    adjustViewport: function() {
+      // If the viewport is to high, then
+      // scroll the user down.
+      if (!this.isElementInViewport(this.el)) {
+        $('html, body').animate({ scrollTop: $(app.options.el).offset().top - 15 }, 1000);
+      }
+    },
+    
+    isElementInViewport: function(el) {
+      var rect = el.getBoundingClientRect();
+
+      return (
+        rect.top >= 0 &&
+        rect.top + 50 <= window.innerHeight
+      );
     }
   });
   
