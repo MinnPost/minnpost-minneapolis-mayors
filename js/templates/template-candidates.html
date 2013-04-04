@@ -1,4 +1,6 @@
 <div class="candidates-container">
+  <p class="click-candidate-desciption sans-serif">Click candidate to see details</p>
+
   <div class="candidates-list clear-block">
     <% _.each(candidates, function(c) { %>
       <div class="candidate-list-candidate">
@@ -12,7 +14,8 @@
     <% }) %>
   </div>
 
+  <div class="candidate-details-divider"></div>
+  
   <div id="candidates-details" class="clear-block">
-    <p class="click-candidate-desciption sans-serif">Click candidate to see details</p>
   </div>
 </div>

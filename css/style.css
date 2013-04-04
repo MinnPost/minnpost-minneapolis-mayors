@@ -83,7 +83,8 @@
 
 .click-candidate-desciption {
   text-align: center;
-  padding: 2em 0 3em 0;
+  padding: 2em 0 .5em 0;
+  margin: 0;
   display: block;
   text-transform: uppercase;
   color: #BDBDBD;
@@ -101,8 +102,18 @@
 /**
  * Candidate view
  */
+.candidate-details-divider {
+  margin: .5em auto 2em auto;
+  width: 50%;
+  border-bottom: 1px solid #BDBDBD;
+}
+
 .candidate-details-container h3 {
   margin-bottom: .5em;
+}
+
+.candidate-details-container h4 {
+  font-size: 1em;
 }
 
 .candidate-details-left {
