@@ -87,9 +87,15 @@ module.exports = function(grunt) {
         }
       },
       images: {
-        files: {
-          'dist/images/': 'css/images/*'
-        }
+        files: [
+          {
+            cwd: './css/images/',
+            expand: true,
+            filter: 'isFile',
+            src: ['*'],
+            dest: 'dist/images/'
+          }
+        ]
       }
     },
     watch: {
