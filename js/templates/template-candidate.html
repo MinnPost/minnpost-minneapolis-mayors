@@ -4,10 +4,18 @@
       <h3><%= candidate.candidatename %></h3>
     
       <h4>Bio</h4>
-      <%= candidate.biotext %>
+      <% if (candidate.biotext) { %>
+        <%= candidate.biotext %>
+      <% } else { %>
+        <p>(not available)</p>
+      <% } %>
       
       <h4>Mayor quote</h4>
-      <%= candidate.whymayorquote %>
+      <% if (candidate.whymayorquote) { %>
+        <%= candidate.whymayorquote %>
+      <% } else { %>
+        <p>(not available)</p>
+      <% } %>
       
     </div>
   </div>
@@ -16,15 +24,13 @@
     <div class="candidate-details-right-inner">
       <h3>&nbsp;</h3>
       
-      <h4>Stats</h4>
-      
       <div class="candidate-stats sans-serif">
         <div>
           <span class="candidate-stats-label">Age</span>: <%= candidate.age %>
         </div>
         
         <div>
-          <span class="candidate-stats-label">Neighborhood</span>: <%= candidate.neighborhood %>
+          <span class="candidate-stats-label">Neighborhood</span>: <%= candidate.neighborhood %> (<a href="https://maps.google.com/maps?q=<%= encodeURI(candidate.neighborhood) %>+minneapolis+mn" target="_blank">map</a>)
         </div>
         
         <div>
