@@ -1,0 +1,109 @@
+/**
+ * Main CSS for 
+ */
+ 
+/**
+ * General styles
+ */
+.clear {
+  clear: both;
+}
+
+.hidden {
+  display: none;
+}
+
+.clear-block:after {
+  content:".";
+  display:block;
+  height:0;
+  clear:both;
+  visibility:hidden;
+}
+.clear-block {
+  display:inline-block;
+}
+/*_\*/
+* html .clear-block {
+  height:1%;
+}
+.clear-block{
+  display:block;
+}
+/* End hide from IE-mac */
+
+
+.sans-serif {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+/**
+ * Loading styles
+ */
+.loading-general {
+  width: 100%;
+  text-align: center;
+  padding: 2em 2em;
+  color: #ABABAB;
+  vertical-align: middle;
+  height: 100%;
+  line-height: 100%;
+}
+.loading-general span {
+  padding: 10px 5px 10px 40px;
+  background: transparent url('images/loading.gif') center left no-repeat;
+  vertical-align: middle;
+  height: 100%;
+  line-height: 100%;
+}
+
+/**
+ * Candidate list
+ */
+.candidate-list-candidate {
+  float: left;
+  width: 16.665555555%;
+  min-height: 100px;
+}
+
+.candidate-list-candidate-inner {
+  text-align: center;
+  padding: 5% 5%;
+}
+
+.candidate-list-candidate-inner img {
+  max-width: 100%;
+  min-height: 100px;
+  background-color: #DEDEDE;
+  display: block;
+}
+
+.click-candidate-desciption {
+  text-align: center;
+  font-size: 2em;
+  line-height: 1.25em;
+  margin: 1em;
+}
+
+/**
+ * Candidate view
+ */
+.candidate-details-container {
+  margin-top: 2em;
+}
+
+.candidate-details-left {
+  float: left;
+  width: 65%;
+}
+
+.candidate-details-left-inner {
+  padding-right: 1em;
+}
+
+.candidate-details-right {
+  float: right;
+  width: 35%;
+}
+
+
