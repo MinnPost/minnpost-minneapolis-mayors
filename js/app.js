@@ -11,8 +11,12 @@
   });
   
   app.CandidatesCollection = Backbone.Collection.extend({
-    model: app.CandidateModel
+    model: app.CandidateModel,
     
+    comparator: function(c) {
+      // Sort by last name
+      return c.get('candidatename').split(' ').pop();
+    }
   });
   
   app.CandidateView = Backbone.View.extend({
