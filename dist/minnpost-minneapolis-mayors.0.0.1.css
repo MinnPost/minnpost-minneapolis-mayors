@@ -62,8 +62,8 @@
  */
 .candidate-list-candidate {
   float: left;
-  width: 14.2857143%;
   width: 16.665555555%;
+  width: 14.2857143%;
   min-height: 100px;
   font-size: .85em;
   margin-top: .5em;
@@ -179,8 +179,8 @@
 
 @media screen and (max-width: 430px) {
   .candidate-list-candidate {
+    width: 33.3322222222%;
     width: 25%;
-    width: 33.3322222222%
   }
   .candidate-list-candidate a {
     min-height: 3.5em;
